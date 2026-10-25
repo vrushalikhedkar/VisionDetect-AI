@@ -39,6 +39,7 @@ VisionDetect-AI is a web-based object detection application built using Python, 
 ## 📂 Project Structure
 
 VisionDetect-AI/
+
 ├── app.py
 ├── templates/
 │   ├── index.html
