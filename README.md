@@ -49,4 +49,9 @@ object_detection_saved/ — Pre-trained model files stored locally
 README.md — Project documentation
 
 
+## 🎯 Project Objective
+
+The goal of VisionDetect-AI is to demonstrate how deep learning and computer vision can be integrated into a web application to identify objects in uploaded images.
+
+
 
