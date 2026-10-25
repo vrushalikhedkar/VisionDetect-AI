@@ -1,11 +1,11 @@
 # VisionDetect-AI
 
-### AI-Powered Object Detection Using Deep Learning
+## AI-Powered Object Detection Using Deep Learning
 
 VisionDetect-AI is a web-based object detection application built using Python, TensorFlow, and Flask. It allows users to upload an image and detect objects using a pre-trained deep learning model.
 
 
-### ✨ Features
+## ✨ Features
 
 - 📤 Upload images through a simple web interface
 
@@ -15,4 +15,4 @@ VisionDetect-AI is a web-based object detection application built using Python, 
 
 - 🖼️ View the processed image with detection boxes
 
- -🌐 User-friendly web interface built with Flask, HTML, and CSS
+- 🌐 User-friendly web interface built with Flask, HTML, and CSS
