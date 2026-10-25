@@ -81,4 +81,7 @@ The goal of VisionDetect-AI is to demonstrate how deep learning and computer vis
 To integrate deep learning and computer vision into a user-friendly web application for image-based object detection.
 
 
+## 👩‍💻 Author
+
+#Vrushali V Khedkar#
 
