@@ -54,4 +54,15 @@ README.md — Project documentation
 The goal of VisionDetect-AI is to demonstrate how deep learning and computer vision can be integrated into a web application to identify objects in uploaded images.
 
 
+## 🚀 Applications
+
+- Image analysis
+
+- Computer vision demonstrations
+
+- Object recognition systems
+
+- AI-powered image processing
+
+
 
