@@ -83,5 +83,5 @@ To integrate deep learning and computer vision into a user-friendly web applicat
 
 ## 👩‍💻 Author
 
-# Vrushali V Khedkar #
+** Vrushali V Khedkar **
 
