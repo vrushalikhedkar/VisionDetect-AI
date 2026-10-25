@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Results | VisionDetect AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">◎</span>
+            VisionDetect <span class="brand-ai">AI</span>
+        </a>
+        <span class="status"><span class="status-dot"></span> Analysis Complete</span>
+    </header>
+
+    <main class="container results-container">
+        <section class="hero results-hero">
+            <p class="eyebrow">ANALYSIS REPORT</p>
+            <h1>Detection <span>Results.</span></h1>
+            <p class="description">
+                Here is the image annotated with the model's predictions.
+            </p>
+        </section>
+
+        <section class="result-card">
+            <div class="result-heading">
+                <div>
+                    <h2>Processed image</h2>
+                    <p class="muted">Fixed-size preview · Original proportions preserved</p>
+                </div>
+                <span class="count-badge">
+                    {{ total_detections }} detections
+                </span>
+            </div>
+
+            <div class="image-frame result-frame">
+                <img class="result-image"
+                     src="data:image/jpeg;base64,{{ result_image }}"
+                     alt="Image with detected objects">
+            </div>
+
+            {% if processing_time is defined %}
+                <p class="muted timing">
+                    Processing time: {{ processing_time }} seconds
+                </p>
+            {% endif %}
+        </section>
+
+        <section class="result-card detections-card">
+            <h2>Detected objects</h2>
+
+            {% if detections %}
+                <div class="detection-list">
+                    {% for item in detections %}
+                        <div class="detection-item">
+                            <div class="object-symbol">◎</div>
+                            <div class="object-details">
+                                <strong>{{ item.label }}</strong>
+                                <span class="muted">Confidence score</span>
+                            </div>
+                            <div class="confidence">
+                                {{ "%.1f"|format(item.score * 100) }}%
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <span>◎</span>
+                    <h3>No objects detected</h3>
+                    <p class="muted">
+                        Try another image or review the model's confidence threshold.
+                    </p>
+                </div>
+            {% endif %}
+        </section>
+
+        <a href="/" class="back-button">← Upload another image</a>
+    </main>
+</body>
+</html>

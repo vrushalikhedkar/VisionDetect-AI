@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionDetect AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">◎</span>
+            VisionDetect <span class="brand-ai">AI</span>
+        </a>
+        <span class="status"><span class="status-dot"></span> AI Powered</span>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <p class="eyebrow">COMPUTER VISION · DEEP LEARNING</p>
+            <h1>Detect smarter.</h1>
+            <p class="description">
+                Upload an image and let AI identify objects with bounding boxes
+                and confidence scores.
+            </p>
+        </section>
+
+        <section class="upload-card">
+            <h2>Upload your image</h2>
+            <p class="muted">Choose an image to begin object detection.</p>
+
+            <form action="/detect" method="POST" enctype="multipart/form-data"
+                  id="uploadForm">
+
+                <label for="imageInput" class="drop-zone" id="dropZone">
+                    <span class="upload-icon">↑</span>
+                    <strong>Choose an image</strong>
+                    <span class="muted">JPG, JPEG or PNG</span>
+                    <span class="browse-button">Browse files</span>
+                </label>
+
+                <input type="file" id="imageInput" name="image"
+                       accept="image/jpeg,image/png,image/jpg" required>
+
+                <div class="preview-section" id="previewSection">
+                    <h3>Image preview</h3>
+                    <div class="image-frame">
+                        <img id="imagePreview" alt="Selected image preview">
+                    </div>
+                    <p id="imageInfo" class="muted"></p>
+                </div>
+
+                <button type="submit" class="detect-button" id="detectButton">
+                    Detect Objects <span>→</span>
+                </button>
+
+                <p class="privacy-note">Your image is processed by the detection model.</p>
+            </form>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <span class="feature-icon blue">◎</span>
+                <h3>Object Detection</h3>
+                <p>Identify objects in images.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon purple">◉</span>
+                <h3>Confidence Scores</h3>
+                <p>Review prediction confidence.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon green">ϟ</span>
+                <h3>Visual Results</h3>
+                <p>View annotated images.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const fileInput = document.getElementById("imageInput");
+        const preview = document.getElementById("imagePreview");
+        const previewSection = document.getElementById("previewSection");
+        const imageInfo = document.getElementById("imageInfo");
+        const dropZone = document.getElementById("dropZone");
+        const form = document.getElementById("uploadForm");
+        const detectButton = document.getElementById("detectButton");
+
+        let previewUrl = null;
+
+        fileInput.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (!file) {
+                previewSection.style.display = "none";
+                return;
+            }
+
+            if (!file.type.startsWith("image/")) {
+                alert("Please select a valid image file.");
+                this.value = "";
+                previewSection.style.display = "none";
+                return;
+            }
+
+            if (previewUrl) {
+                URL.revokeObjectURL(previewUrl);
+            }
+
+            previewUrl = URL.createObjectURL(file);
+            preview.src = previewUrl;
+            previewSection.style.display = "block";
+            imageInfo.textContent =
+                file.name + " · " + (file.size / 1024).toFixed(1) + " KB";
+            dropZone.querySelector("strong").textContent = file.name;
+        });
+
+        form.addEventListener("submit", function () {
+            if (fileInput.files.length > 0) {
+                detectButton.disabled = true;
+                detectButton.innerHTML =
+                    '<span class="spinner"></span> Processing image...';
+            }
+        });
+    </script>
+
+</body>
+</html>
