@@ -65,4 +65,20 @@ The goal of VisionDetect-AI is to demonstrate how deep learning and computer vis
 - AI-powered image processing
 
 
+## ⚙️ How It Works
+
+- Upload an image.
+
+- The deep learning model analyzes it.
+
+- Detected objects and confidence scores are displayed.
+
+- Bounding boxes highlight the detected objects.
+
+
+## 🎯 Objective
+
+To integrate deep learning and computer vision into a user-friendly web application for image-based object detection.
+
+
 
