@@ -38,17 +38,15 @@ VisionDetect-AI is a web-based object detection application built using Python, 
 
 ## 📂 Project Structure
 
-VisionDetect-AI/
+app.py — Main Flask application
 
-├── app.py
-├── templates/
-│   ├── index.html
-│   └── result.html
-├── static/
-│   └── index.css
-├── object_detection_saved/  # Local model files
-├── .gitignore
-└── README.md
+templates/ — HTML templates for the web interface
+
+static/ — CSS styling files
+
+object_detection_saved/ — Pre-trained model files stored locally
+
+README.md — Project documentation
 
 
 
